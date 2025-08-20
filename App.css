@@ -15,7 +15,7 @@ body {
 main{
     width: 50%;
     height: max-content;
-    border: 8px solid blueviolet;
+    border: 1px solid blue;
 }
 #noBtn {
     display: none;

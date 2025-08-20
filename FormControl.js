@@ -41,7 +41,5 @@ export default class formControl {
       alert("Please fix the errors before submitting.");
     }
   }
- // CheckName() {
-    //localStorage.setItem("lastname", "Moloi");
-  //}
+
 }
