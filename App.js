@@ -11,7 +11,7 @@ if (localStorage.getItem("username")) {
   username.textContent = localStorage.getItem("username")
   getName.style.display= "none"
 } else {
-  alert("No username found in localStorage.");
+  alert("No username found! Please enter new username");
   getName.style.display = "block"
 }
  let saveBtn = document.getElementById("saveBtn");
