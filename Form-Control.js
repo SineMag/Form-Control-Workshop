@@ -1,41 +1,47 @@
-export default class FormControl {
-  constructor(num1, email) {
-    this.num1 = num1;
+export default class formControl {
+  constructor(num) {
+    this.num = num;
     this.email = email;
-    // this.getName(); // stores name in localStorage
+    //this.CheckName()
   }
-
-  //  Check if it is a number
+  // Number check
   checkIsNumber() {
-    const success = Number(this.num1);
-    return !isNaN(success) && this.num1 !== null && this.num1 !== "";
-  }
-
-  // number validation
-  submitNumber() {
-    if (this.checkIsNumber()) {
-      alert("Success: " + this.num1 + " is a number");
+    const input = document.getElementById("num1").value.trim();
+    const errorMsg = document.getElementById("notNumber");
+    if (input === "" || isNaN(input)) {
+      errorMsg.hidden = false; // show the span
+      return false; // invalid
     } else {
-      alert("Error: " + this.num1 + " is NOT a number");
+      errorMsg.hidden = true; // hide the span
+      return true; // valid
     }
   }
-
-  //   email is valid
-  validEmail() {
+  // Email check
+  checkIsEmail() {
+    const email = document.getElementById("email").value.trim();
+    const errorMsg = document.getElementById("notEmail");
+    // Regex for basic email validation
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-    if (emailPattern.test(this.email)) {
-      alert("Email is valid: " + this.email);
-      return true;
-    } else {
-      alert("Please enter a valid email");
+    if (!emailPattern.test(email)) {
+      errorMsg.hidden = false; // show error
       return false;
+    } else {
+      errorMsg.hidden = true; // hide error
+      return true;
     }
   }
-
-  //  Save details in localStorage
-  // getName() {
-  //   localStorage.setItem("firstName", "Joe");
-  //   console.log("Local storage set: Joe");
-  // }
+  // Submit handler
+  submitHandler(event) {
+    event.preventDefault(); // stop default submit
+    const isNumberValid = this.checkIsNumber();
+    const isEmailValid = this.checkIsEmail();
+    if (isNumberValid && isEmailValid) {
+      alert("Success: Form submitted!");
+    } else {
+      alert("Please fix the errors before submitting.");
+    }
+  }
+ // CheckName() {
+    //localStorage.setItem("lastname", "Moloi");
+  //}
 }
